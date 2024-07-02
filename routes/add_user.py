@@ -31,8 +31,9 @@ def add_user():
             'team': team
         })
         flash('Пользователь добавлен', 'success')
-
-        if session.get('team').split()[0] != 'Moder':
+        if session.get('team') == None:
+            redirect(url_for('admin_page'))
+        elif session.get('team').split()[0] != 'Moder':
             return redirect(url_for('admin_page'))
         elif moder:
             return redirect(url_for('moderator_page'))
