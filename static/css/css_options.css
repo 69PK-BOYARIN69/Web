@@ -1,0 +1,46 @@
+body {
+    background: url('/static/img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #6A5ACD;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+input[type="checkbox"] {
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6A5ACD;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #483D8B;
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: red; /* Красный цвет для кнопки */
+}
+
+.close-button:hover {
+    color: darkred; /* Более темный красный цвет при наведении */
+}

@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Вход</title>
+    <link rel="stylesheet" href="/static/css/css_login.css">
+</head>
+<body>
+    <form method="post">
+        <div style="margin-bottom: 20px;">
+            <label for="username" style="color: black;">Username:</label><br>
+            <input type="text" id="username" name="username">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label for="password" style="color: black;">Password:</label><br>
+            <input type="password" id="password" name="password">
+        </div>
+        <input type="submit" value="Login">
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>

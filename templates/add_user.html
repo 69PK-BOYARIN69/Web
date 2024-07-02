@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление пользователя</title>
+    <link rel="stylesheet" href="/static/css/css_add_user.css">
+</head>
+<body>
+
+<form method="post">
+    <button class="close-button" onclick="window.history.back();">&times;</button>
+    <label for="fullname">ФИО</label><br>
+    <input type="text" id="fullname" name="fullname"><br>
+
+    <label for="username">Почта</label><br>
+    <input type="text" id="username" name="username"><br>
+
+    <label for="password">Пароль</label><br>
+    <input type="password" id="password" name="password"><br>
+
+<!--        <label for="is_admin">Админ</label>-->
+<!--        <input type="checkbox" id="is_admin" name="is_admin"><br>-->
+
+        <label for="team">Команда</label>
+        <select id="team" name="team">
+            <option value="Team1">Команда 1</option>
+            <option value="Team2">Команда 2</option>
+            <option value="Team3">Команда 3</option>
+            <option value="Moder Team1">Модератор команды 1</option>
+            <option value="Moder Team2">Модератор команды 2</option>
+            <option value="Moder Team3">Модератор команды 3</option>
+        </select><br>
+
+    <input type="submit" value="Добавить пользователя">
+</form>
+</body>
+</html>

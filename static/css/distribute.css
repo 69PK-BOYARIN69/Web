@@ -1,0 +1,84 @@
+body {
+background: url('/static/img/background.jpg') no-repeat center center fixed;
+background-size: cover;
+font-family: Arial, sans-serif;
+margin: 0;
+display: flex;
+justify-content: center; /* Центрирование контента по горизонтали */
+align-items: center; /* Центрирование контента по вертикали */
+height: 100vh; /* Заполнение высоты экрана */
+}
+
+h1 {
+text-align: center;
+margin-top: 20px;
+}
+
+.container {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start; /* Изменение распределения элементов, чтобы они начинались слева */
+max-width: 500px;
+padding: 20px;
+}
+
+form {
+width: 250px; /* Изменение ширины формы с учетом отступа между элементами */
+padding: 20px;
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+margin-bottom: 5px;
+}
+
+.chart-container {
+margin-left: 15px; /* Отступ слева для контейнера графика */
+}
+
+input[type="range"] {
+width: calc(100% - 40px); /* Ширина слайдера, учитывая внутренние отступы */
+margin: 10px 0;
+}
+
+input[type="submit"] {
+margin-top: 20px;
+width: 100%; /* Ширина кнопки */
+padding: 10px 20px;
+background-color: #483D8B;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+input[type="submit"]:hover {
+background-color: #483D8B;
+}
+
+#myChart {
+width: 400px; /* Ширина графика */
+margin-top: 20px; /* Отступ сверху для графика */
+padding: 20px;
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.slider-value {
+margin-left: 10px; /* Отступ слева для значения слайдера */
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: red; /* Красный цвет для кнопки */
+}
+
+.close-button:hover {
+    color: darkred; /* Более темный красный цвет при наведении */
+}

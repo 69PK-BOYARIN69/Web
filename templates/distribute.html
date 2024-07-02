@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Страница распределения</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/distribute.css">
+</head>
+<body>
+<form method="post">
+    <button type="button" class="close-button" onclick="window.history.back();">&times;</button>
+    {{ sliders|safe }}
+    <input type="submit" value="Отправить">
+</form>
+<div class="container">
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var selectedOptions = {{ selected_options | tojson }};
+    var myChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: selectedOptions,
+            datasets: [{
+                label: 'Своя оценка',
+                data: new Array(selectedOptions.length).fill(0),
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                r: {
+                    angleLines: {
+                        display: true
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 10,
+                    beginAtZero: true,
+                    ticks: {
+                        display: false,
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+
+    // Функция для создания элементов <span> с числами под каждым слайдером
+    function createSliderValueElements() {
+        var sliders = document.querySelectorAll('input[type="range"]');
+        sliders.forEach(function (slider) {
+            var span = document.createElement('span');
+            span.className = 'slider-value';
+            slider.parentNode.insertBefore(span, slider.nextSibling);
+            updateSliderValue(slider);
+            slider.addEventListener('input', function() {
+                updateSliderValue(slider);
+            });
+        });
+    }
+
+    // Функция для обновления значения числа под слайдером
+    function updateSliderValue(slider) {
+        var span = slider.parentNode.querySelector('.slider-value');
+        span.innerText = slider.value;
+    }
+
+    // Вызываем функцию для создания элементов <span> при загрузке страницы
+    createSliderValueElements();
+
+    function updateGraph() {
+        var values = [];
+        var sliders = document.querySelectorAll('input[type="range"]');
+        sliders.forEach(function (slider) {
+            values.push(parseInt(slider.value));
+        });
+        myChart.data.datasets[0].data = values;
+        myChart.update();
+    }
+</script>
+</body>
+</html>

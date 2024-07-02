@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('/static/img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid #ddd;
+    margin-top: 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+}
+
+.user-info {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.chart-container {
+    width: 450px;
+    height: 350px;
+    margin-top: 10px;
+    display: inline-block;
+
+    margin-left: 20px;
+    overflow: hidden;
+}
+
+.chart-container:last-child {
+    margin-right: 0;
+}
+
+.chart-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}

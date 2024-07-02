@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/css/css_user_info.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Информация о пользователе</h1>
+        <div class="user-details">
+            <p><strong>ФИО:</strong> {{ user.fullname }}</p>
+            <p><strong>Роль:</strong> {{ role }}</p>
+        </div>
+        <button class="back-button" onclick="goBack()">Назад</button>
+
+        <div class="chart-container">
+            {% for text in test_texts %}
+                <div class="chart-item">
+                    <h3>{{ text.name }}</h3>
+                    <canvas id="chart-{{ loop.index }}"></canvas>
+                    <script>
+                        const ctx{{ loop.index }} = document.getElementById('chart-{{ loop.index }}').getContext('2d');
+                        const labels{{ loop.index }} = {{ text.questions|map(attribute='question')|list|tojson }};
+                        const data{{ loop.index }} = {
+                            labels: labels{{ loop.index }},
+                            datasets: [{
+                                label: 'Ожидаемая оценка',
+                                data: {% if role_data[loop.index-1] %}{{ role_data[loop.index-1]|tojson }}{% else %}[]{% endif %},
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Средние значения',
+                                data: {% if average_scores[loop.index-1] %}{{ average_scores[loop.index-1]|tojson }}{% else %}[]{% endif %},
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Ответы пользователя',
+                                data: {% if user_answers[loop.index-1] %}{{ user_answers[loop.index-1]|tojson }}{% else %}[]{% endif %},
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderWidth: 1
+                            }]
+                        };
+                        new Chart(ctx{{ loop.index }}, {
+                            type: 'radar',
+                            data: data{{ loop.index }},
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    r: {
+                                        angleLines: {
+                                            display: true
+                                        },
+                                        suggestedMin: 0,
+                                        suggestedMax: 4,
+                                        pointLabels: {
+                                            fontSize: 8, /* Увеличить размер шрифта для меток на осях */
+                                            callback: function(label) {
+                                                // Разделить слова на новой строке
+                                                return label.split(' ').map(function(word) {
+                                                    return word;
+                                                }).join('\n');
+                                            }
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        labels: {
+                                            font: {
+                                                size: 8 /* Увеличить размер шрифта легенды */
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

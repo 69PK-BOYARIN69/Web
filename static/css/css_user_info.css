@@ -1,0 +1,73 @@
+body {
+    background: url('/static/img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.user-details {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.user-details p {
+    margin: 5px 0;
+}
+
+.back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
+
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Добавить отступы между графиками */
+}
+
+.chart-item {
+    width: 32%; /* Уменьшить ширину для трех графиков в строку */
+    margin-bottom: 20px;
+    position: relative;
+    height: 200px; /* Увеличить высоту для большего места */
+    box-sizing: border-box;
+}
+
+.chart-item h3 {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+.chart-item canvas {
+    width: 100% !important;
+    height: 100% !important;
+}

@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('/static/img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+a, input[type=submit] {
+    display: block;
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.delete-btn {
+        width: 45%;
+        height: 45%;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+
+    .delete-btn img {
+        width: 75%;
+        height: auto;
+    }
+
+a:hover, input[type=submit]:hover {
+    background-color: rgb(128, 128, 128);
+}
+
+.action {
+    margin-top: 20px;
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: red; /* Красный цвет для кнопки */
+}
+
+.close-button:hover {
+    color: darkred; /* Более темный красный цвет при наведении */
+}

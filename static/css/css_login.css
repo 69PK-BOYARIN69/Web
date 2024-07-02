@@ -1,0 +1,52 @@
+body {
+    background: url('/static/img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center; /* размещение по вертикали по центру */
+    justify-content: center; /* размещение по горизонтали по центру */
+    height: 100vh; /* высота окна просмотра */
+}
+
+form {
+    border-radius: 4px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.6); /* Цвет фона формы */
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    max-width: 300px;
+    width: 100%;
+    position: relative; /* чтобы сообщение об ошибке было позиционировано относительно формы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+form label {
+    font-size: 18px;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+    background-color: #FFFFFF; /* белый цвет кнопки */
+    color: black; /* черный текст */
+    padding: 15px 30px;
+    border: 1px solid #000000; /* черная рамка */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%; /* Кнопка равномерно распределена по ширине формы */
+    box-sizing: border-box;
+}
+
+.error-message {
+{
+    color: #FF6347;
+    margin-top: 10px;
+}
+}

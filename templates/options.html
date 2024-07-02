@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Выбор компетенций</title>
+    <link rel="stylesheet" href="/static/css/css_options.css">
+</head>
+<body>
+<form method="post">
+    <button type="button" class="close-button" onclick="window.history.back();">&times;</button>
+    <input type="checkbox" name="option" value="Визионер"> Визионер<br>
+    <input type="checkbox" name="option" value="Стратегический лидер"> Стратегический лидер<br>
+    <input type="checkbox" name="option" value="Проектный лидер"> Проектный лидер<br>
+    <input type="checkbox" name="option" value="Проектный аналитик"> Проектный аналитик<br>
+    <input type="checkbox" name="option" value="Предприниматель"> Предприниматель<br>
+    <input type="checkbox" name="option" value="Методолог"> Методолог<br>
+    <input type="checkbox" name="option" value="Коммуникатор"> Коммуникатор<br>
+    <input type="checkbox" name="option" value="Интегратор"> Интегратор<br>
+    <input type="checkbox" name="option" value="Эксперт"> Эксперт<br>
+    <input type="checkbox" name="option" value="Поставщик ресурсов"> Поставщик ресурсов<br>
+    <input type="checkbox" name="option" value="Исполнитель"> Исполнитель<br>
+    <input type="checkbox" name="option" value="Контролер"> Контролер<br>
+    <input type="submit" value="Далее">
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const userCompetencies = new Set({{ user_competencies|tojson }});
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        checkboxes.forEach(checkbox => {
+            if (userCompetencies.has(checkbox.value)) {
+                checkbox.checked = true;
+            }
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const submitButton = document.querySelector('input[type="submit"]');
+const maxAllowed = 3;
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        const checkedCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+        if (checkedCount > maxAllowed) {
+            this.checked = false;
+        }
+    });
+});
+
+submitButton.addEventListener('click', function (event) {
+    const checkedCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+    if (checkedCount > maxAllowed) {
+        event.preventDefault();
+        alert(`Пожалуйста, выберите ровно ${maxAllowed} опции.`);
+    }
+});
+});
+</script>
+</body>
+</html>

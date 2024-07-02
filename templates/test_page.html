@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовая страница</title>
+    <link rel="stylesheet" href="/static/css/css_test_page.css">
+</head>
+<body>
+<div class="container">
+    <form method="POST" class="form-container">
+        <button type="button" class="close-button" onclick="window.history.back();">&times;</button>
+        {% for questions_doc in questions_list %}
+        <div class="competence-block">
+            <div class="competence-header">
+                <h2>{{ questions_doc.name }}</h2>
+            </div>
+            {% for question in questions_doc.questions %}
+            <div class="form-question">
+                <h3>{{ question.question }}</h3>
+                {% for i in range(4) %}
+                <label class="answer-option">
+                    <input type="radio" name="{{ question.question }}" value="{{ i + 1 }}" title="{{ question.answers[i] }}">
+                    {{ question.answers[i] }}
+                </label>
+                <br>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Отправить" class="form-submit">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о команде</title>
+    <link rel="stylesheet" href="/static/css/css_team_info.css">
+</head>
+<body>
+<div class="container">
+    <form class="team-info-form">
+        <!-- Кнопка закрытия -->
+        <button type="button" class="close-button" onclick="window.history.back();">&times;</button>
+
+        <h2>Привет, модератор команды "{{ current_team }}"</h2>
+        <h3>Участники команды:</h3>
+        <ul>
+            {% for i in range(users|length) %}
+            <li>
+                <a href="{{ url_for('user_page', user_id=users[i]._id) }}">{{ users[i].fullname }}</a>:
+                {% if users[i].distributed_values %}
+                    {% for role, value in users[i].distributed_values.items() %}
+                        {% set index = loop.index0 %}
+                        {% set link_color = 'green-link' if comparison_results[i][index] else 'red-link' %}
+                        <a class="{{ link_color }}" href="{{ url_for('user_info', user_id=users[i]._id, role=role) }}">{{ role }}</a>
+                        {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if success %}
+            <p>Команда <span class="green-text">удовлетворяет</span> требованиям к успешности</p>
+        {% else %}
+            <p>Команда <span class="red-text">НЕ</span> удовлетворяет требованиям к успешности</p>
+        {% endif %}
+
+        {% if options %}
+            <p>Нет ролей: <span class="red-text">{{ options|join(', ') }}</span></p>
+        {% else %}
+            <p>Присутствуют <span class="green-text">ВСЕ</span> роли</p>
+        {% endif %}
+        <a href="{{ url_for('moderator_page') }}">Вернуться на страницу модератора</a>
+    </form>
+</div>
+</body>
+</html>

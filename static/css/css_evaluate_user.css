@@ -1,0 +1,83 @@
+body {
+    background: url('/static/img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.chartjs-radar-chart ::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, red, yellow, green); /* Set the desired colors */
+}
+
+.chartjs-radar-chart ::-moz-range-track {
+    background: linear-gradient(to right, red, yellow, green); /* Set the desired colors */
+}
+
+input[type="range"] {
+    width: 200px;
+    margin: 10px;
+}
+
+input[type="submit"] {
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #483D8B;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #483D8B;
+}
+
+#myChart {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: red; /* Красный цвет для кнопки */
+}
+
+.close-button:hover {
+    color: darkred; /* Более темный красный цвет при наведении */
+}

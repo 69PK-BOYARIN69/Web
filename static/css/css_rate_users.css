@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('/static/img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    max-width: 600px; /* Уменьшенный максимальный размер */
+    margin: 20px auto;
+    padding: 15px; /* Уменьшенный padding */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Для кнопки закрытия */
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px; /* Уменьшенный отступ снизу */
+}
+
+.user-item {
+    background-color: #fff;
+    padding: 10px; /* Уменьшенный padding */
+    margin-bottom: 10px; /* Уменьшенный отступ снизу */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-item a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.user-item a:hover {
+    text-decoration: underline;
+}
+
+.return-link {
+    display: block;
+    margin: 15px 0; /* Уменьшенный отступ сверху и снизу */
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.return-link:hover {
+    text-decoration: underline;
+}

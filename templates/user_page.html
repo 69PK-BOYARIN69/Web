@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница пользователя</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/css_user_page.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="user-info">
+    <h2>Привет, {{fullname}}!</h2>
+    <p><a href="/options">Перейти к выбору опций</a></p>
+    <p><a href="/test/{{ user_id }}">Пройти тест</a></p>  <!-- Передача user_id в URL -->
+    <p><a href="/rate_users">Оценить других пользователей</a></p>
+    <p><a href="/">Выйти</a></p>
+</div>
+<form>
+    <div class="chart-links">
+        {% for op in selected_options %}
+            <a href="{{ url_for('user_info', user_id=user_id, role=op) }}">{{ op }}</a>,
+        {% endfor %}
+    </div>
+</form>
+<form>
+    <div class="chart-wrapper">
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChart3"></canvas>
+        </div>
+    </div>
+</form>
+<script>
+    var selected_options = {{selected_options | tojson}};
+    var data_values = {{data_values | tojson}};
+    var average_scores = {{average_scores | tojson}};
+    var average = {{average | tojson}};
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Теперь вы можете использовать эти переменные для создания графиков с помощью Chart.js
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: selected_options,
+                datasets: [{
+                    label: 'Своя оценка',
+                    data: data_values,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        beginAtZero: true,
+                        ticks: {
+                            display: false,
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx2, {
+            type: 'radar',
+            data: {
+                labels: selected_options,
+                datasets: [{
+                    label: 'Оценка другим пользователем',
+                    data: average_scores,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        beginAtZero: true,
+                        ticks: {
+                            display: false,
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+
+        var ctx3 = document.getElementById('myChart3').getContext('2d');
+        var myChart3 = new Chart(ctx3, {
+            type: 'radar',
+            data: {
+                labels: selected_options,
+                datasets: [{
+                    label: 'Средняя оценка',
+                    data: average,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10,
+                        beginAtZero: true,
+                        ticks: {
+                            display: false,
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
